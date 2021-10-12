@@ -31,9 +31,11 @@ export type GraphQLResolver = (
   info: GraphQLResolveInfo
 ) => any;
 
+export type GraphQLSubscribe = { subscribe: GraphQLResolver };
+
 export type GraphQLSchemaExtension = {
   typeDefs: string;
-  resolvers: Record<string, Record<string, GraphQLResolver>>;
+  resolvers: Record<string, Record<string, GraphQLResolver | GraphQLSubscribe>>;
 };
 
 // TODO: don't duplicate this between here and packages/keystone/ListTypes/list.js
