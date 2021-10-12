@@ -1,19 +1,22 @@
-import type { IncomingMessage, ServerResponse } from 'http';
+import type { IncomingMessage, ServerResponse, Server } from 'http';
 import { GraphQLError, GraphQLSchema } from 'graphql';
 import { ApolloServer as ApolloServerMicro } from 'apollo-server-micro';
 import { ApolloServer as ApolloServerExpress } from 'apollo-server-express';
+import type { Config } from 'apollo-server-express';
 import type { CreateContext, GraphQLConfig, SessionStrategy } from '../../types';
 import { createSessionContext } from '../../session';
 
 export const createApolloServerMicro = ({
   graphQLSchema,
   createContext,
+  httpServer,
   sessionStrategy,
   graphqlConfig,
   connectionPromise,
 }: {
   graphQLSchema: GraphQLSchema;
   createContext: CreateContext;
+  httpServer: Server;
   sessionStrategy?: SessionStrategy<any>;
   graphqlConfig?: GraphQLConfig;
   connectionPromise: Promise<any>;
@@ -27,18 +30,20 @@ export const createApolloServerMicro = ({
       req,
     });
   };
-  const serverConfig = _createApolloServerConfig({ graphQLSchema, graphqlConfig });
+  const serverConfig = _createApolloServerConfig({ graphQLSchema, graphqlConfig, httpServer });
   return new ApolloServerMicro({ ...serverConfig, context });
 };
 
 export const createApolloServerExpress = ({
   graphQLSchema,
   createContext,
+  httpServer,
   sessionStrategy,
   graphqlConfig,
 }: {
   graphQLSchema: GraphQLSchema;
   createContext: CreateContext;
+  httpServer: Server;
   sessionStrategy?: SessionStrategy<any>;
   graphqlConfig?: GraphQLConfig;
 }) => {
@@ -49,28 +54,35 @@ export const createApolloServerExpress = ({
         : undefined,
       req,
     });
-  const serverConfig = _createApolloServerConfig({ graphQLSchema, graphqlConfig });
+  const serverConfig = _createApolloServerConfig({ graphQLSchema, graphqlConfig, httpServer });
   return new ApolloServerExpress({ ...serverConfig, context });
 };
 
 const _createApolloServerConfig = ({
   graphQLSchema,
   graphqlConfig,
+  httpServer,
 }: {
   graphQLSchema: GraphQLSchema;
   graphqlConfig?: GraphQLConfig;
+  httpServer: Server;
 }) => {
-  const apolloConfig = graphqlConfig?.apolloConfig;
+  //const apolloConfig = graphqlConfig?.apolloConfig;
+  const apolloConfig = _getApolloConfig(graphqlConfig, graphQLSchema, httpServer);
 
   return {
     schema: graphQLSchema,
     debug: graphqlConfig?.debug, // If undefined, use Apollo default of NODE_ENV !== 'production'
     ...apolloConfig,
-    formatError: formatError(graphqlConfig),
+    formatError: formatError(graphqlConfig, graphQLSchema, httpServer),
   };
 };
 
-const formatError = (graphqlConfig: GraphQLConfig | undefined) => {
+const formatError = (
+  graphqlConfig: GraphQLConfig | undefined,
+  graphQLSchema: GraphQLSchema,
+  httpServer: Server
+) => {
   return (err: GraphQLError) => {
     let debug = graphqlConfig?.debug;
     if (debug === undefined) {
@@ -83,10 +95,25 @@ const formatError = (graphqlConfig: GraphQLConfig | undefined) => {
       delete err.extensions.exception;
     }
 
-    if (graphqlConfig?.apolloConfig?.formatError) {
-      return graphqlConfig.apolloConfig.formatError(err);
+    const apolloConfig = _getApolloConfig(graphqlConfig, graphQLSchema, httpServer);
+    if (apolloConfig?.formatError) {
+      return apolloConfig.formatError(err);
     } else {
       return err;
     }
   };
+};
+
+const _getApolloConfig = (
+  graphqlConfig: GraphQLConfig | undefined,
+  graphQLSchema: GraphQLSchema,
+  httpServer: Server
+): Config | undefined => {
+  if (graphqlConfig?.apolloConfig) {
+    return typeof graphqlConfig.apolloConfig === 'function'
+      ? graphqlConfig.apolloConfig(graphQLSchema, httpServer)
+      : graphqlConfig.apolloConfig;
+  } else {
+    return undefined;
+  }
 };

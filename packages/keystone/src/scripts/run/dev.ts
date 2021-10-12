@@ -1,6 +1,7 @@
 import path from 'path';
 import url from 'url';
 import express from 'express';
+import http from 'http';
 import { generateAdminUI } from '../../admin-ui/system';
 import { devMigrations, pushPrismaSchemaToDatabase } from '../../lib/migrations';
 import { createSystem } from '../../lib/createSystem';
@@ -30,6 +31,7 @@ export const dev = async (cwd: string, shouldDropDatabase: boolean) => {
   console.log('✨ Starting Keystone');
 
   const app = express();
+  const httpServer = http.createServer(app);
   let expressServer: ExpressServer = null;
   let adminUIMiddleware: AdminUIMiddleware = null;
   const ready = () => !!(expressServer && adminUIMiddleware);
@@ -78,7 +80,7 @@ export const dev = async (cwd: string, shouldDropDatabase: boolean) => {
 
     // Set up the Express Server
     console.log('✨ Creating server');
-    expressServer = await createExpressServer(config, graphQLSchema, createContext);
+    expressServer = await createExpressServer(config, httpServer, graphQLSchema, createContext);
     console.log(`✅ GraphQL API ready`);
 
     // Initialise the Admin UI
@@ -137,7 +139,8 @@ export const dev = async (cwd: string, shouldDropDatabase: boolean) => {
     initKeystonePromiseResolve = resolve;
     initKeystonePromiseReject = reject;
   });
-  const server = app.listen(port, (err?: any) => {
+
+  const server = httpServer.listen(port, (err?: any) => {
     if (err) throw err;
     // We start initialising Keystone after the dev server is ready,
     console.log(`⭐️ Dev Server Starting on http://localhost:${port}`);

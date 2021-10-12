@@ -1,6 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import cors, { CorsOptions } from 'cors';
 import express from 'express';
+import http from 'http';
 import { GraphQLSchema } from 'graphql';
 import { graphqlUploadExpress } from 'graphql-upload';
 import type { KeystoneConfig, CreateContext, SessionStrategy, GraphQLConfig } from '../../types';
@@ -20,6 +21,7 @@ const DEFAULT_MAX_FILE_SIZE = 200 * 1024 * 1024; // 200 MiB
 
 const addApolloServer = async ({
   server,
+  httpServer,
   config,
   graphQLSchema,
   createContext,
@@ -27,6 +29,7 @@ const addApolloServer = async ({
   graphqlConfig,
 }: {
   server: express.Express;
+  httpServer: http.Server;
   config: KeystoneConfig;
   graphQLSchema: GraphQLSchema;
   createContext: CreateContext;
@@ -38,6 +41,7 @@ const addApolloServer = async ({
     createContext,
     sessionStrategy,
     graphqlConfig,
+    httpServer,
   });
 
   const maxFileSize = config.server?.maxFileSize || DEFAULT_MAX_FILE_SIZE;
@@ -56,6 +60,7 @@ const addApolloServer = async ({
 
 export const createExpressServer = async (
   config: KeystoneConfig,
+  httpServer: http.Server,
   graphQLSchema: GraphQLSchema,
   createContext: CreateContext
 ) => {
@@ -92,6 +97,7 @@ export const createExpressServer = async (
     createContext,
     sessionStrategy: config.session,
     graphqlConfig: config.graphql,
+    httpServer,
   });
 
   return server;

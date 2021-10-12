@@ -1,5 +1,7 @@
 import path from 'path';
+import http from 'http';
 import * as fs from 'fs-extra';
+import express from 'express';
 import { createSystem } from '../../lib/createSystem';
 import { initConfig } from '../../lib/config/initConfig';
 import { createExpressServer } from '../../lib/server/createExpressServer';
@@ -28,7 +30,15 @@ export const start = async (cwd: string) => {
   await keystone.connect();
 
   console.log('✨ Creating server');
-  const server = await createExpressServer(config, graphQLSchema, keystone.createContext);
+  const server = express();
+  const httpServer = http.createServer(server);
+  const middleware = await createExpressServer(
+    config,
+    httpServer,
+    graphQLSchema,
+    keystone.createContext
+  );
+  server.use(middleware);
   console.log(`✅ GraphQL API ready`);
   if (!config.ui?.isDisabled) {
     console.log('✨ Preparing Admin UI Next.js app');
