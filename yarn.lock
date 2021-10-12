@@ -1760,6 +1760,115 @@
   resolved "https://registry.yarnpkg.com/@josephg/resolvable/-/resolvable-1.0.1.tgz#69bc4db754d79e1a2f17a650d3466e038d94a5eb"
   integrity sha512-CtzORUwWTTOTqfVtHaKRJ0I1kNQd1bpn3sUh8I3nJDVY+5/M/Oe1DnEWzPQvqq/xPIIkzzzIP7mfCoAjFRvDhg==
 
+"@keystone-next/auth@file:./packages/auth":
+  version "34.0.0"
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    "@graphql-tools/schema" "^8.2.0"
+    "@keystone-ui/button" "^5.0.2"
+    "@keystone-ui/core" "^3.2.1"
+    "@keystone-ui/fields" "^5.0.1"
+    "@keystone-ui/notice" "^4.1.1"
+    cross-fetch "^3.1.4"
+    fast-deep-equal "^3.1.3"
+    graphql "^15.6.1"
+
+"@keystone-next/keystone@file:./packages/keystone":
+  version "26.1.1"
+  dependencies:
+    "@apollo/client" "^3.4.16"
+    "@babel/core" "^7.15.8"
+    "@babel/runtime" "^7.15.4"
+    "@emotion/hash" "^0.8.0"
+    "@emotion/weak-memoize" "^0.2.5"
+    "@graphql-tools/schema" "^8.2.0"
+    "@graphql-ts/schema" "0.3.1"
+    "@hapi/iron" "^6.0.0"
+    "@keystone-ui/button" "^5.0.2"
+    "@keystone-ui/core" "^3.2.1"
+    "@keystone-ui/fields" "^5.0.1"
+    "@keystone-ui/icons" "^4.0.2"
+    "@keystone-ui/loading" "^4.0.2"
+    "@keystone-ui/modals" "^4.0.2"
+    "@keystone-ui/notice" "^4.1.1"
+    "@keystone-ui/options" "^4.0.4"
+    "@keystone-ui/pill" "^5.0.2"
+    "@keystone-ui/popover" "^4.0.5"
+    "@keystone-ui/segmented-control" "^5.0.1"
+    "@keystone-ui/toast" "^4.0.4"
+    "@keystone-ui/tooltip" "^4.0.3"
+    "@preconstruct/next" "^3.0.0"
+    "@prisma/client" "3.2.1"
+    "@prisma/migrate" "3.2.1"
+    "@prisma/sdk" "3.2.1"
+    "@sindresorhus/slugify" "^1.1.2"
+    "@types/apollo-upload-client" "14.1.0"
+    "@types/bcryptjs" "^2.4.2"
+    "@types/cookie" "^0.4.1"
+    "@types/express" "^4.17.13"
+    "@types/form-data" "2.5.0"
+    "@types/fs-extra" "^9.0.13"
+    "@types/graphql-upload" "^8.0.7"
+    "@types/inflection" "^1.13.0"
+    "@types/node-fetch" "^2.5.12"
+    "@types/pluralize" "^0.0.29"
+    "@types/prettier" "^2.4.1"
+    "@types/prompts" "^2.0.14"
+    "@types/react" "^17.0.27"
+    "@types/source-map-support" "^0.5.4"
+    "@types/supertest" "^2.0.11"
+    "@types/uid-safe" "^2.1.2"
+    "@types/uuid" "^8.3.1"
+    apollo-server-errors "^3.1.0"
+    apollo-server-express "^3.3.0"
+    apollo-server-micro "^3.3.0"
+    apollo-server-types "^3.2.0"
+    apollo-upload-client "^16.0.0"
+    bcryptjs "^2.4.3"
+    bytes "^3.1.0"
+    chalk "^4.1.2"
+    clipboard-copy "^4.0.1"
+    cookie "^0.4.1"
+    copy-to-clipboard "^3.3.1"
+    cors "^2.8.5"
+    cuid "^2.1.8"
+    date-fns "^2.25.0"
+    decimal.js "10.3.1"
+    dumb-passwords "^0.2.1"
+    execa "^5.1.1"
+    express "^4.17.1"
+    fast-deep-equal "^3.1.3"
+    fast-glob "^3.2.7"
+    filenamify "^4.3.0"
+    form-data "4.0.0"
+    fs-extra "^10.0.0"
+    graphql "^15.6.1"
+    graphql-type-json "^0.3.2"
+    graphql-upload "^12.0.0"
+    image-size "^1.0.0"
+    image-type "^4.1.0"
+    inflection "^1.13.1"
+    intersection-observer "^0.12.0"
+    memoize-one "^5.2.1"
+    meow "^9.0.0"
+    micro "^9.3.4"
+    next "^11.1.0"
+    node-fetch "^2.6.5"
+    object-hash "^2.2.0"
+    p-limit "^2.3.0"
+    pirates "^4.0.1"
+    pluralize "^8.0.0"
+    prettier "^2.4.1"
+    prisma "3.2.1"
+    prompts "^2.4.2"
+    react "^17.0.2"
+    react-dom "^17.0.2"
+    resolve "^1.20.0"
+    source-map-support "^0.5.20"
+    supertest "^6.1.6"
+    uid-safe "^2.1.5"
+    uuid "^8.3.2"
+
 "@manypkg/cli@^0.18.0":
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/@manypkg/cli/-/cli-0.18.0.tgz#2b40d5aa7f88d43142e041de8fc8d7e44aa28a1d"
@@ -3768,11 +3877,6 @@ babel-plugin-polyfill-regenerator@^0.2.2:
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.2.2"
 
-babel-plugin-remove-graphql-queries@2.7.2:
-  version "2.7.2"
-  resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.7.2.tgz#101c8b26567e35c217e817e892135a9a04a5a805"
-  integrity sha512-kkIqi2+oZ7YCLbZbrhOGxPA/HuWpfvzRUxbD75SHqwxl9fZVWSLQhOUl72GEpAuEt4MeCEguKpMX100oDN3MQA==
-
 babel-plugin-syntax-jsx@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
@@ -3803,6 +3907,11 @@ babel-preset-jest@^27.2.0:
   dependencies:
     babel-plugin-jest-hoist "^27.2.0"
     babel-preset-current-node-syntax "^1.0.0"
+
+backo2@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
+  integrity sha1-MasayLEpNjRj41s+u2n038+6eUc=
 
 bail@^1.0.0:
   version "1.0.5"
@@ -5735,6 +5844,11 @@ event-stream@=3.3.4:
     stream-combiner "~0.0.4"
     through "~2.3.1"
 
+eventemitter3@^3.1.0:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
+  integrity sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==
+
 events@^3.0.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
@@ -6553,6 +6667,13 @@ grapheme-splitter@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
+
+graphql-subscriptions@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/graphql-subscriptions/-/graphql-subscriptions-1.2.1.tgz#2142b2d729661ddf967b7388f7cf1dd4cf2e061d"
+  integrity sha512-95yD/tKi24q8xYa7Q9rhQN16AYj5wPbrb8tmHGM3WRc9EBmWrG/0kkMl+tQG8wcEuE9ibR4zyOM31p5Sdr2v4g==
+  dependencies:
+    iterall "^1.3.0"
 
 graphql-tag@^2.11.0, graphql-tag@^2.12.3, graphql-tag@^2.12.5:
   version "2.12.5"
@@ -7542,6 +7663,11 @@ istanbul-reports@^3.0.2:
   dependencies:
     html-escaper "^2.0.0"
     istanbul-lib-report "^3.0.0"
+
+iterall@^1.2.1, iterall@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.3.0.tgz#afcb08492e2915cbd8a0884eb93a8c94d0d72fea"
+  integrity sha512-QZ9qOMdF+QLHxy1QIpUHUU1D5pS2CG2P69LF6L6CPjPYA/XMOmKV3PZpawHoAjHNyB0swdVTRxdYT4tbBbxqwg==
 
 jest-changed-files@^27.2.5:
   version "27.2.5"
@@ -11662,6 +11788,17 @@ stylis@^4.0.3:
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-4.0.10.tgz#446512d1097197ab3f02fb3c258358c3f7a14240"
   integrity sha512-m3k+dk7QeJw660eIKRRn3xPF6uuvHs/FFzjX3HQ5ove0qYsiygoAhwn5a3IYKaZPo5LrYD0rfVmtv1gNY1uYwg==
 
+subscriptions-transport-ws@^0.9.19:
+  version "0.9.19"
+  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.9.19.tgz#10ca32f7e291d5ee8eb728b9c02e43c52606cdcf"
+  integrity sha512-dxdemxFFB0ppCLg10FTtRqH/31FNRL1y1BQv8209MK5I4CwALb7iihQg+7p65lFcIl8MHatINWBLOqpgU4Kyyw==
+  dependencies:
+    backo2 "^1.0.2"
+    eventemitter3 "^3.1.0"
+    iterall "^1.2.1"
+    symbol-observable "^1.0.4"
+    ws "^5.2.0 || ^6.0.0 || ^7.0.0"
+
 superagent@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/superagent/-/superagent-6.1.0.tgz#09f08807bc41108ef164cfb4be293cebd480f4a6"
@@ -11739,6 +11876,11 @@ svgo@^1.2.2:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+symbol-observable@^1.0.4:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
+  integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
 
 symbol-observable@^4.0.0:
   version "4.0.0"
@@ -12988,7 +13130,7 @@ write-file-atomic@^3.0.0:
     signal-exit "^3.0.2"
     typedarray-to-buffer "^3.1.5"
 
-ws@^7.4.6:
+"ws@^5.2.0 || ^6.0.0 || ^7.0.0", ws@^7.4.6:
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.5.tgz#8b4bc4af518cfabd0473ae4f99144287b33eb881"
   integrity sha512-BAkMFcAzl8as1G/hArkxOxq3G7pjUqQ3gzYbLL0/5zNkph70e+lCoxBGnm6AW1+/aiNeV4fnKqZ8m4GZewmH2w==
