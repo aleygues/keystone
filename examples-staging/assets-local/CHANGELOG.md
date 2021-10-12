@@ -1,5 +1,12 @@
 # @keystone-next/example-assets-local
 
+## 1.0.8
+
+### Patch Changes
+
+- Updated dependencies [[`f38772b27`](https://github.com/keystonejs/keystone/commit/f38772b27d3e9d157127dabfa40036462c235a9f), [`30fc08b51`](https://github.com/keystonejs/keystone/commit/30fc08b515e4f8851fd2583a265a813c683bf604), [`dcf5241d8`](https://github.com/keystonejs/keystone/commit/dcf5241d8e3e62b080842a5d4bfd47a7f2cce5ca)]:
+  - @keystone-next/keystone@27.0.0
+
 ## 1.0.7
 
 ### Patch Changes

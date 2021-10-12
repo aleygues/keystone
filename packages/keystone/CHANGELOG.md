@@ -1,5 +1,17 @@
 # @keystone-next/keystone
 
+## 27.0.0
+
+### Major Changes
+
+- [#6755](https://github.com/keystonejs/keystone/pull/6755) [`dcf5241d8`](https://github.com/keystonejs/keystone/commit/dcf5241d8e3e62b080842a5d4bfd47a7f2cce5ca) Thanks [@mitchellhamilton](https://github.com/mitchellhamilton)! - Updated the way the `endSession` field on the `Mutation` type and the `keystone` field on the `Query` type are added to the GraphQL schema. This may result in re-ordering in your generated `schema.graphql` file. The `sessionSchema` export of `@keystone-next/keystone/session` has also been removed.
+
+### Patch Changes
+
+- [#6758](https://github.com/keystonejs/keystone/pull/6758) [`f38772b27`](https://github.com/keystonejs/keystone/commit/f38772b27d3e9d157127dabfa40036462c235a9f) Thanks [@mitchellhamilton](https://github.com/mitchellhamilton)! - Fixed `text`, `integer`, `float` and `decimal` on the item view when using `ui.itemView.fieldMode: 'read'`.
+
+* [#6777](https://github.com/keystonejs/keystone/pull/6777) [`30fc08b51`](https://github.com/keystonejs/keystone/commit/30fc08b515e4f8851fd2583a265a813c683bf604) Thanks [@mitchellhamilton](https://github.com/mitchellhamilton)! - Fixed the home page of the Admin UI not respecting `ui.hideCreate`
+
 ## 26.1.1
 
 ### Patch Changes
