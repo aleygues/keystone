@@ -1,3 +1,4 @@
+import type { Server } from 'http';
 import type { Config } from 'apollo-server-express';
 import { CorsOptions } from 'cors';
 import express from 'express';
@@ -121,7 +122,7 @@ export type GraphQLConfig = {
    *  Additional options to pass into the ApolloServer constructor.
    *  @see https://www.apollographql.com/docs/apollo-server/api/apollo-server/#constructor
    */
-  apolloConfig?: Config;
+  apolloConfig?: Config | ((graphQLSchema: GraphQLSchema, httpServer: Server) => Config);
   /*
    * When an error is returned from the GraphQL API, Apollo can include a stacktrace
    * indicating where the error occurred. When Keystone is processing mutations, it
